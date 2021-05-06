@@ -1,26 +1,26 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.stereotype.Component;
 
+@Component("musicPlayer")
 public class MusicPlayer {
-    private List<Music> musicList = new ArrayList<>();
+    private Music music;
     private String name;
     private int volume;
 
     public MusicPlayer() {
     }
 
-    public MusicPlayer(List<Music> musicList) {
-        this.musicList = musicList;
+    public MusicPlayer(Music music) {
+        this.music = music;
     }
 
-    public List<Music> getMusicList() {
-        return musicList;
+    public Music getMusic() {
+        return music;
     }
 
-    public void setMusicList(List<Music> musicList) {
-        this.musicList = musicList;
+    public void setMusic(Music music) {
+        this.music = music;
     }
 
     public String getName() {
@@ -39,10 +39,7 @@ public class MusicPlayer {
         this.volume = volume;
     }
 
-    public void playSong() {
-
-        musicList.forEach(s-> {
-            System.out.println(s.getSong());
-        });
+    public void playMusic() {
+        System.out.println("Playing: " + music.getSong());
     }
 }
