@@ -11,14 +11,11 @@ public class MusicPlayer {
     private String name;
     private int volume;
 
-//    public MusicPlayer() {
-//    }
     @Autowired
-    public MusicPlayer(@Qualifier("classicMusic") Music music1, @Qualifier("rockMusic") Music music2) {
+    public MusicPlayer(@Qualifier("classicalMusic") Music music1, @Qualifier("rockMusic") Music music2) {
         this.music1 = music1;
         this.music2 = music2;
     }
-
 
     public String getName() {
         return name;
@@ -36,7 +33,15 @@ public class MusicPlayer {
         this.volume = volume;
     }
 
-    public String playMusic() {
-         return " is playing " + music1.getSong() + " and " + music2.getSong();
+    public String playMusic(Genre genre) {
+        switch (genre) {
+            case CLASSIC: {
+                return " is playing " + music1.getSong();
+            }
+            case ROCK: {
+                return " is playing " + music2.getSong();
+            }
+        }
+        return null;
     }
 }
